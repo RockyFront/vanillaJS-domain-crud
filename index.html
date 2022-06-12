@@ -1,0 +1,50 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="table-interactions">
+    <div id="table-wrapper">
+        <div class="topRow">
+            <div class="topRow-first">
+                <button class="btn">+ Add domain</button>
+                <button class="btn" onclick="onEditButton()">Edit</button>
+                <button class="btn" onclick="getData().then(() => makeTable())">⥁ Refresh</button>
+                <button class="btn" onclick="deleteData(onDeleteButton()).then(()=> getData()).then(() => console.log(blogs))">🗑 Delete</button>
+            </div>
+            <div class="topRow-second">
+                <button class="btn">Filter</button>
+                <button class="btn">A</button>
+                <button class="btn">B</button>
+                <button class="btn">C</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<form class="edit-form d-none" id="edit-form" onsubmit="editData(confirmForm()).then(() => getData()).then(() => makeTable())">
+
+    <div class="form-control">
+        <label for="domain-name">Domain Name: </label><input type="text" name="" id="domain-name" pattern="^((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}\.(xn--)?([a-z0-9\-]{1,61}|[a-z0-9-]{1,30}\.[a-z]{2,})$" required>
+    </div>
+    <div class="form-control">
+        <label for="ip">IP: </label><input type="text" minlength="7" maxlength="15" pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$" id="ip" required></div>
+    <div class="form-control">
+        <label for="status">Status: </label><input type="text" name="" id="status" required></div>
+    <div class="edit-buttons">
+        <button id="edit-cancel" onclick="cancelForm()" class="btn">Cancel </button>
+        <button id="edit-confirm" type="submit"
+           class="btn">Confirm</button>
+    </div>
+</form>
+
+<script src="app.js"></script>
+</body>
+</html>
